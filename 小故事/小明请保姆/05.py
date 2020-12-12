@@ -60,7 +60,7 @@ class Cleaner(Person):
     def go_to_work(self, employer):
         print(self.name, '正在前往', employer.name, '的家')
         sleep(2)
-        print(self.name, '正在前往', employer.name, '的家')
+        print(self.name, '已经到达', employer.name, '的家')
         self.clean(employer)
 
     def clean(self, employer):
