@@ -1,3 +1,11 @@
+'''
+实际生活中，保洁员赶往雇主家、打扫卫生肯定需要花费时间的
+因此我们这里使用sleep来等待一段时间，代表花费的时间
+sleep接收的参数是秒数
+sleep(2)代表等待2秒
+使用sleep方法需要先导入
+from time import sleep
+'''
 from time import sleep
 
 
