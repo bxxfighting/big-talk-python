@@ -41,11 +41,11 @@ class CleanCompany:
         '''
         保洁订单
         '''
-        cleaners = self.select_cleaners(employer, count)
+        cleaners = self.select_cleaners(count)
         for cleaner in cleaners:
             self.assign_task(cleaner, employer)
 
-    def select_cleaners(self, employer, count):
+    def select_cleaners(self, count):
         '''
         分配保洁
         '''
