@@ -4,6 +4,7 @@
 这里主要是使用随机数操作
 '''
 import os
+import xlsxwriter
 from random import randint
 from time import sleep
 from threading import Thread
@@ -131,6 +132,20 @@ class CleanCompany:
         '''
         cleaner.go_to_work(employer)
 
+    def export_cleaner_to_excel(self):
+        '''
+        导出保洁信息到excel中
+        '''
+        workbook = xlsxwriter.Workbook('{}.xlsx'.format(self.name))
+        worksheet = workbook.add_worksheet()
+        row = 0
+        col = 0
+        for cleaner in self.cleaners.values():
+            worksheet.write(row, col, cleaner.no)
+            worksheet.write(row, col+1, cleaner.name)
+            row += 1
+        workbook.close()
+
 
 class Cleaner(Person):
     '''
@@ -198,3 +213,10 @@ if __name__ == '__main__':
     # 现在有三家保洁公司了，大家可以有了更多选择
     for employer in employer_list:
         employer.call_cleaners(clean_companys[randint(0, len(clean_companys)-1)], randint(1, 50))
+
+    sleep(5)
+    # 现在想导出保洁的信息到excel中，老板要看一下
+    for company in clean_companys:
+        print(company.name)
+        company.delete_cleaner(list(company.cleaners.keys())[0])
+        company.export_cleaner_to_excel()
